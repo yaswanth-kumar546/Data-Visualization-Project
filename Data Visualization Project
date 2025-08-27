@@ -1,0 +1,19 @@
+# DATA VISUALIZATION USING SEABORN AND MATPLOTLIB
+
+
+import pandas as pd
+import seaborn as sns
+from sklearn.datasets import load_iris
+
+import matplotlib.pyplot as plt
+
+# Sample dataset: Iris
+iris = load_iris()
+df = pd.DataFrame(iris.data, columns=iris.feature_names)
+df['species'] = pd.Categorical.from_codes(iris.target, iris.target_names)
+
+# Pairplot for best visualization
+sns.set(style="whitegrid")
+pairplot = sns.pairplot(df, hue="species", palette="Set2", diag_kind="kde")
+plt.suptitle("Iris Dataset Pairplot", y=1.02)
+plt.show()
